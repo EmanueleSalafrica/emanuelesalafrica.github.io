@@ -1,4 +1,6 @@
-# Emanuele Salafrica – Portfolio
+# Emanuele Salafrica — Portfolio
+
+Die veröffentlichte Portfolio-Adresse ist `https://emanuelesalafrica.de`.
 
 Statische Portfolio-Website für GitHub Pages. Sie ist bewusst ohne Framework gebaut, damit sie direkt, schnell und kostenlos deploybar ist.
 
