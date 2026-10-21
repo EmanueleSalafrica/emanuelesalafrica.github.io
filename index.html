@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfolio von Emanuele Salafrica – Medieninformatik, Softwareentwicklung und interaktive 3D-Anwendungen." />
+    <meta name="theme-color" content="#06110e" />
+    <title>Emanuele Salafrica — Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Zum Inhalt springen</a>
+    <canvas id="constellation" aria-hidden="true"></canvas>
+
+    <header class="site-header">
+      <a class="wordmark" href="#start" aria-label="Zur Startseite">ES<span>.</span></a>
+      <nav aria-label="Hauptnavigation">
+        <a class="nav-link active" href="#start">Start</a>
+        <a class="nav-link" href="#ueber-mich">Über mich</a>
+        <a class="nav-link" href="#projekte">Projekte</a>
+      </nav>
+      <a class="header-contact" href="mailto:Emanuele_25.03.97@hotmail.com">Kontakt <span>↗</span></a>
+    </header>
+
+    <main id="content">
+      <section class="hero section" id="start" aria-labelledby="hero-title">
+        <div class="hero-glow"></div>
+        <div class="availability"><span></span> Pflichtpraktikum gesucht · SoSe 2027</div>
+        <p class="eyebrow">Hallo, ich bin</p>
+        <h1 id="hero-title">Emanuele<span>.</span></h1>
+        <p class="hero-role">MEDIENINFORMATIK <span>·</span> C# / UNITY <span>·</span> INTERAKTIVE 3D-ANWENDUNGEN</p>
+        <p class="hero-intro">Ich entwickle digitale Erlebnisse an der Schnittstelle aus Code, 3D und guter Interaktion.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#ueber-mich">Mehr erfahren <span>↓</span></a>
+          <a class="button button-ghost" href="#projekte">Projekte ansehen <span>↗</span></a>
+        </div>
+        <a class="scroll-hint" href="#ueber-mich" aria-label="Zum Abschnitt Über mich scrollen">SCROLL <span>↓</span></a>
+      </section>
+
+      <section class="ticker" aria-label="Schwerpunkte">
+        <div class="ticker-track">
+          <span>UNITY</span><i>✦</i><span>C#</span><i>✦</i><span>PYTHON</span><i>✦</i><span>BLENDER</span><i>✦</i><span>AUTODESK MAYA</span><i>✦</i><span>WEBPROGRAMMIERUNG</span><i>✦</i><span>ALGORITHMEN</span><i>✦</i>
+          <span>UNITY</span><i>✦</i><span>C#</span><i>✦</i><span>PYTHON</span><i>✦</i><span>BLENDER</span><i>✦</i><span>AUTODESK MAYA</span><i>✦</i><span>WEBPROGRAMMIERUNG</span><i>✦</i><span>ALGORITHMEN</span><i>✦</i>
+        </div>
+      </section>
+
+      <section class="about section" id="ueber-mich" aria-labelledby="about-title">
+        <div class="section-label">01 / ÜBER MICH</div>
+        <div class="about-grid">
+          <div>
+            <p class="eyebrow">Mein Weg</p>
+            <h2 id="about-title">Medieninformatik<br /><em>trifft Umsetzung.</em></h2>
+          </div>
+          <div class="about-copy">
+            <p>Ich studiere Medieninformatik an der THM Friedberg. Besonders interessieren mich Softwareentwicklung, interaktive 3D-Anwendungen und digitale Produkte, die nicht nur technisch funktionieren, sondern sich auch gut anfühlen.</p>
+            <p>Mein stärkstes Projekt bisher: ein im Viererteam entwickelter 3D-Top-down-Shooter in Unity und C#, bewertet mit <strong>1,0</strong>. Für das Sommersemester 2027 suche ich ein zwölfwöchiges Pflichtpraktikum.</p>
+            <dl class="facts">
+              <div><dt>STUDIUM</dt><dd>B.Sc. Medieninformatik<br />THM Friedberg</dd></div>
+              <div><dt>FOKUS</dt><dd>Software · 3D · Interaktion</dd></div>
+              <div><dt>GESUCHT</dt><dd>Pflichtpraktikum<br />ab April 2027</dd></div>
+            </dl>
+          </div>
+        </div>
+
+        <div class="timeline" aria-label="Ausbildung">
+          <article class="timeline-card">
+            <div class="card-top"><span>EDUCATION</span><span>01</span></div>
+            <div class="timeline-icon">◒</div>
+            <h3>Realschulabschluss</h3>
+            <p>Schulische Grundlage und erster Schritt in Richtung Technik und digitale Medien.</p>
+          </article>
+          <article class="timeline-card featured">
+            <div class="card-top"><span>EDUCATION</span><span>02</span></div>
+            <div class="timeline-icon">◇</div>
+            <h3>Fachabitur</h3>
+            <p>Fachhochschulreife als Weg in ein anwendungsorientiertes Informatikstudium.</p>
+          </article>
+          <article class="timeline-card current">
+            <div class="card-top"><span>NOW</span><span>03</span></div>
+            <div class="timeline-icon">⌘</div>
+            <h3>Medieninformatik</h3>
+            <p>B.Sc. an der THM Friedberg – mit Softwareentwicklung, Webprogrammierung und Algorithmen.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="stack section" aria-labelledby="stack-title">
+        <div class="section-label">02 / TOOLKIT</div>
+        <div class="stack-heading">
+          <h2 id="stack-title">Was ich<br /><em>gern baue.</em></h2>
+          <p>Technische Grundlagen, die ich im Studium und in Teamprojekten nutze und weiter ausbaue.</p>
+        </div>
+        <div class="stack-list">
+          <div class="stack-item"><span class="stack-number">01</span><h3>Unity / C#</h3><p>3D-Projekte, Spiellogik und Teamarbeit</p><span class="stack-arrow">↗</span></div>
+          <div class="stack-item"><span class="stack-number">02</span><h3>Python</h3><p>Programmiergrundlagen und technische Lösungsansätze</p><span class="stack-arrow">↗</span></div>
+          <div class="stack-item"><span class="stack-number">03</span><h3>Blender & Maya</h3><p>3D-Modellierung und Texturierung</p><span class="stack-arrow">↗</span></div>
+          <div class="stack-item"><span class="stack-number">04</span><h3>Web & Algorithmen</h3><p>Grundlagen für strukturierte digitale Produkte</p><span class="stack-arrow">↗</span></div>
+        </div>
+      </section>
+
+      <section class="projects section" id="projekte" aria-labelledby="projects-title">
+        <div class="section-label">03 / PORTFOLIO</div>
+        <div class="projects-heading">
+          <div><p class="eyebrow">Ausgewählte Arbeiten</p><h2 id="projects-title">Projekte mit<br /><em>Substanz.</em></h2></div>
+          <p>Das erste Projekt ist belegt. Die weiteren Karten sind bewusst Platzhalter und lassen sich später mit Screenshots, Links und kurzen Beschreibungen füllen.</p>
+        </div>
+        <div class="project-grid">
+          <article class="project-card project-card-large">
+            <div class="project-visual shooter-visual" aria-hidden="true"><span class="crosshair"></span><span class="shooter-orb orb-one"></span><span class="shooter-orb orb-two"></span><span class="shooter-line line-one"></span><span class="shooter-line line-two"></span></div>
+            <div class="project-meta"><span>UNITY / C#</span><span>TEAMPROJEKT</span></div>
+            <h3>3D Top-down Shooter</h3>
+            <p>Gemeinsam mit drei Kommilitonen entwickelt. Ein Unity-/C#-Projekt mit der Note 1,0.</p>
+            <div class="project-tags"><span>Unity</span><span>C#</span><span>3D</span><span>Teamwork</span></div>
+          </article>
+          <article class="project-card placeholder-card">
+            <div class="project-visual placeholder-visual"><span>+</span><small>PLATZHALTER</small></div>
+            <div class="project-meta"><span>NÄCHSTES PROJEKT</span><span>IN VORBEREITUNG</span></div>
+            <h3>Interaktive 3D-Erfahrung</h3>
+            <p>Hier können später Screenshots, ein Video und eine kurze Projektbeschreibung stehen.</p>
+            <div class="project-tags"><span>3D</span><span>Interaction</span></div>
+          </article>
+          <article class="project-card placeholder-card">
+            <div class="project-visual placeholder-visual grid-placeholder"><span>+</span><small>PLATZHALTER</small></div>
+            <div class="project-meta"><span>NÄCHSTES PROJEKT</span><span>IN VORBEREITUNG</span></div>
+            <h3>Web-Projekt</h3>
+            <p>Platz für eine Webanwendung, ein Uni-Projekt oder eine technische Fallstudie.</p>
+            <div class="project-tags"><span>Web</span><span>Code</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="contact-section section" aria-labelledby="contact-title">
+        <div class="contact-panel">
+          <div class="availability"><span></span> Offen für passende Praktika</div>
+          <h2 id="contact-title">Lass uns etwas<br /><em>Gutes bauen.</em></h2>
+          <p>Du suchst Unterstützung im Bereich Softwareentwicklung, interaktive Anwendungen oder 3D? Ich freue mich über eine Nachricht.</p>
+          <a class="button button-primary" href="mailto:Emanuele_25.03.97@hotmail.com">E-Mail schreiben <span>↗</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="wordmark" href="#start" aria-label="Nach oben">ES<span>.</span></a>
+      <p>© <span id="year"></span> Emanuele Salafrica</p>
+      <div><a href="mailto:Emanuele_25.03.97@hotmail.com">E-Mail</a><a href="#">GitHub <span class="soon">folgt</span></a></div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
