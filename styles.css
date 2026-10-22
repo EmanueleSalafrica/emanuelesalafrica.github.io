@@ -241,6 +241,12 @@ nav { display: flex; gap: clamp(1rem, 3vw, 3rem); }
 .about-title-copy { display: block; flex: 0 0 auto; min-width: 0; white-space: nowrap; }
 .about-title-copy em { display: block; margin-top: .06em; font-size: .76em; line-height: .91; white-space: nowrap; }
 .profile-dossier h2#about-title img { display: block; width: clamp(10rem, 17vw, 12rem); height: clamp(10rem, 17vw, 12rem); max-width: 47%; flex: 0 1 auto; object-fit: contain; object-position: center; transform: translateX(clamp(.65rem, 1.5vw, 1.25rem)); filter: drop-shadow(0 12px 18px rgba(0,0,0,.35)); }
+@media (max-width: 860px) {
+  .profile-dossier h2#about-title img {
+    /* Auf schmalen Displays bleibt das Porträt bewusst innerhalb der Karte. */
+    transform: translateX(clamp(-1.15rem, -4vw, -.7rem));
+  }
+}
 /* Der persönliche Teil beginnt bewusst direkt unter der Abschnittsmarke.
    Die Roadmap bleibt rechts als eigener, ruhiger Gegenpol stehen. */
 @media (min-width: 861px) {
