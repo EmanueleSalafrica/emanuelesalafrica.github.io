@@ -277,3 +277,82 @@ nav { display: flex; gap: clamp(1rem, 3vw, 3rem); }
 .project-actions { display: flex; gap: .55rem; margin-top: 1.2rem; }
 .project-icon-link { display: inline-flex; align-items: center; gap: .55rem; min-height: 2.25rem; padding: 0 .7rem; color: var(--mint-bright); border: 1px solid rgba(98,243,178,.34); background: rgba(98,243,178,.05); font: .58rem var(--mono); letter-spacing: .08em; transition: color .2s, background .2s, transform .2s; }
 .project-icon-link .project-github-icon { display: block; width: 1rem; height: 1rem; flex: 0 0 1rem; object-fit: contain; }.project-icon-link b { font: 400 .9rem/1 var(--mono); }.project-icon-link:hover, .project-icon-link:focus-visible { color: #06110e; background: var(--mint-bright); transform: translateY(-2px); }
+
+/* Bildungsweg als kleine Navigationskarte: Jeder Knoten hat eine Nummer,
+   eine sichtbare Verbindung und reagiert auf die aktuelle Scrollposition. */
+.education-route {
+  position: relative;
+  padding: clamp(.75rem, 1.8vw, 1.35rem) 0 clamp(.75rem, 1.8vw, 1.35rem) 2.75rem;
+  border-left: 1px solid rgba(98,243,178,.1);
+  background: linear-gradient(90deg, rgba(98,243,178,.055), transparent 44%);
+}
+.education-route::before {
+  content: "BILDUNGSWEG / 01—03";
+  position: absolute;
+  top: -.1rem;
+  left: 2.75rem;
+  color: rgba(194,255,225,.42);
+  font: .52rem var(--mono);
+  letter-spacing: .16em;
+}
+.education-line {
+  top: 2.25rem;
+  bottom: 1.2rem;
+  width: 2px;
+  background: repeating-linear-gradient(to bottom, rgba(98,243,178,.68) 0 10px, rgba(98,243,178,.11) 10px 17px);
+  box-shadow: 0 0 20px rgba(98,243,178,.16);
+}
+.education-entry {
+  padding-top: 1.55rem;
+}
+.education-marker {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(98,243,178,.76);
+  background: #0a1b15;
+  box-shadow: 0 0 0 5px rgba(6,17,14,.94), 0 0 18px rgba(98,243,178,.14);
+}
+.education-marker::after {
+  content: attr(data-step);
+  color: var(--mint-bright);
+  font: .47rem var(--mono);
+  letter-spacing: -.04em;
+}
+.education-entry::before {
+  content: "";
+  position: absolute;
+  top: 3.2rem;
+  left: .9rem;
+  width: 2.25rem;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(98,243,178,.9), rgba(98,243,178,.08));
+}
+.education-entry.is-active .education-marker {
+  width: 34px;
+  height: 34px;
+  background: var(--mint);
+  border-color: var(--mint-bright);
+  box-shadow: 0 0 0 5px rgba(6,17,14,.94), 0 0 0 8px rgba(98,243,178,.12), 0 0 30px rgba(98,243,178,.6);
+}
+.education-entry.is-active .education-marker::after { color: var(--ink); }
+.education-entry.is-active::before { background: linear-gradient(90deg, #f1fff8, var(--mint)); box-shadow: 0 0 12px rgba(98,243,178,.7); }
+.education-card { overflow: hidden; }
+.education-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(transparent, rgba(98,243,178,.12), transparent);
+}
+.education-entry.is-active .education-card::before { background: linear-gradient(transparent, var(--mint), transparent); box-shadow: 0 0 13px var(--mint); }
+@media (max-width: 860px) {
+  .education-route { padding-left: 2.75rem; }
+  .education-entry::before { width: 2.2rem; }
+}
+@media (max-width: 720px) {
+  .education-route::before { left: 2.75rem; }
+  .education-entry { padding-top: 1.7rem; }
+  .education-entry::before { top: 3.38rem; }
+}
