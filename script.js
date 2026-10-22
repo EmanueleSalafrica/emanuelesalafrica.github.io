@@ -1,3 +1,10 @@
+document.documentElement.classList.add('js');
+
+// Zwei vollständige Wiederholungen pro Bahn sorgen dafür, dass das Ende nie leer wird.
+document.querySelectorAll('.ticker-track').forEach((track) => {
+  track.insertAdjacentHTML('beforeend', track.innerHTML);
+});
+
 const canvas = document.querySelector('#constellation');
 const context = canvas.getContext('2d');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -70,3 +77,149 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { rootMargin: '-45% 0px -45% 0px' });
 sections.forEach((section) => observer.observe(section));
+
+const techReadout = document.querySelector('.stack-readout');
+const techNodes = [...document.querySelectorAll('.stack-card')];
+const energyPulse = document.querySelector('.energy-pulse');
+let energyFrame;
+let pulseHideTimer;
+
+function runEnergyPulse(wireId) {
+  const wire = document.querySelector(`#${wireId}`);
+  if (!wire || !energyPulse) return;
+
+  cancelAnimationFrame(energyFrame);
+  clearTimeout(pulseHideTimer);
+  document.querySelectorAll('.wire-base path.is-energized').forEach((path) => path.classList.remove('is-energized'));
+  wire.classList.add('is-energized');
+
+  const length = wire.getTotalLength();
+  const duration = reduceMotion ? 1 : 320;
+  const startedAt = performance.now();
+  energyPulse.classList.add('is-firing');
+  energyPulse.setAttribute('visibility', 'visible');
+
+  const movePulse = (now) => {
+    const progress = Math.min((now - startedAt) / duration, 1);
+    const point = wire.getPointAtLength(length * progress);
+    energyPulse.setAttribute('cx', point.x);
+    energyPulse.setAttribute('cy', point.y);
+
+    if (progress < 1) {
+      energyFrame = requestAnimationFrame(movePulse);
+      return;
+    }
+
+    pulseHideTimer = window.setTimeout(() => {
+      energyPulse.setAttribute('visibility', 'hidden');
+      energyPulse.classList.remove('is-firing');
+      wire.classList.remove('is-energized');
+    }, 80);
+  };
+
+  energyFrame = requestAnimationFrame(movePulse);
+}
+
+techNodes.forEach((node) => {
+  node.addEventListener('click', () => {
+    techNodes.forEach((item) => item.classList.toggle('is-active', item === node));
+    if (techReadout) techReadout.textContent = node.dataset.tip;
+    runEnergyPulse(node.dataset.wire);
+  });
+});
+
+const interactiveProjects = [...document.querySelectorAll('.interactive-project')];
+
+interactiveProjects.forEach((project) => {
+  const preview = project.querySelector('.project-preview');
+  const media = [...project.querySelectorAll('.project-preview-media')];
+  if (!preview || !media.length) return;
+
+  let activeMedia = 0;
+  let isPreviewing = false;
+  let cycleTimer;
+
+  const showMedia = (nextIndex) => {
+    if (!isPreviewing || nextIndex === activeMedia) return;
+    const previous = media[activeMedia];
+    const next = media[nextIndex];
+    if (!next) return;
+
+    if (next instanceof HTMLVideoElement) {
+      next.currentTime = 0;
+      next.play().catch(() => {});
+    }
+    next.classList.add('is-active');
+    previous.classList.remove('is-active');
+
+    if (previous instanceof HTMLVideoElement) {
+      window.setTimeout(() => {
+        previous.pause();
+        previous.currentTime = 0;
+      }, 600);
+    }
+    activeMedia = nextIndex;
+  };
+
+  const startPreview = () => {
+    if (isPreviewing) return;
+    isPreviewing = true;
+    activeMedia = 0;
+    media.forEach((item, index) => {
+      item.classList.toggle('is-active', index === 0);
+      if (item instanceof HTMLVideoElement) {
+        item.currentTime = 0;
+        if (index === 0) item.play().catch(() => {});
+      }
+    });
+    preview.classList.add('is-previewing');
+    project.classList.add('is-open');
+    if (!(media[0] instanceof HTMLVideoElement) && media.length > 1) {
+      cycleTimer = window.setInterval(() => showMedia((activeMedia + 1) % media.length), 4200);
+    }
+  };
+
+  const stopPreview = () => {
+    isPreviewing = false;
+    window.clearInterval(cycleTimer);
+    preview.classList.remove('is-previewing');
+    project.classList.remove('is-open');
+    media.forEach((item) => {
+      item.classList.remove('is-active');
+      if (item instanceof HTMLVideoElement) {
+        item.pause();
+        item.currentTime = 0;
+      }
+    });
+  };
+
+  media.forEach((item, index) => {
+    if (item instanceof HTMLVideoElement) {
+      item.addEventListener('ended', () => {
+        if (index === activeMedia) showMedia((index + 1) % media.length);
+      });
+    }
+  });
+
+  const togglePreview = () => {
+    const shouldOpen = !isPreviewing;
+    preview.setAttribute('aria-expanded', String(shouldOpen));
+    if (shouldOpen) startPreview();
+    else stopPreview();
+  };
+
+  preview.addEventListener('click', togglePreview);
+  preview.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      togglePreview();
+    }
+  });
+});
+
+const educationEntries = [...document.querySelectorAll('.education-entry')];
+const educationObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => entry.target.classList.toggle('is-active', entry.isIntersecting));
+}, { rootMargin: '-42% 0px -42% 0px', threshold: .01 });
+
+educationEntries.forEach((entry) => educationObserver.observe(entry));
