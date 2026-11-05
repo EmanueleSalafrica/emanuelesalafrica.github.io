@@ -1,37 +1,25 @@
 # Emanuele Salafrica — Portfolio
 
-Die veröffentlichte Portfolio-Adresse ist `https://emanuelesalafrica.de`.
+Website: https://emanuelesalafrica.de/
 
-Statische Portfolio-Website für GitHub Pages. Sie ist bewusst ohne Framework gebaut, damit sie direkt, schnell und kostenlos deploybar ist.
+Repository: https://github.com/EmanueleSalafrica/emanuelesalafrica.github.io
 
-## Lokal ansehen
+Statische Website mit HTML, CSS, JavaScript, Canvas und SVG. Kein Build-Schritt nötig.
 
-Einfach `index.html` im Browser öffnen oder im Projektordner einen lokalen Server starten:
+**Alle Dateien, Animationen und Einstellmöglichkeiten: [CODE-UEBERSICHT.md](CODE-UEBERSICHT.md).**
+
+## Lokal starten
+
+Im Portfolio-Ordner ein Terminal öffnen:
 
 ```powershell
 python -m http.server 8080
 ```
 
-Danach `http://localhost:8080` öffnen.
+Danach http://127.0.0.1:8080/ öffnen. Ein HTTP-Server ist für die JavaScript-Module nötig; beim Doppelklick auf die HTML-Datei kann deren Laden blockiert werden.
 
-## Auf GitHub Pages veröffentlichen
+## Veröffentlichen
 
-1. Einen neuen GitHub-Repository anlegen, z. B. `portfolio`.
-2. Den Inhalt dieses Ordners in das Repository pushen.
-3. Unter **Settings → Pages → Build and deployment** bei Source **GitHub Actions** auswählen.
-4. Der Workflow in `.github/workflows/deploy-pages.yml` veröffentlicht die Seite automatisch bei jedem Push auf `main`.
+Ein Push auf `main` startet `.github/workflows/deploy-pages.yml`. Dieser lädt die statischen Dateien zu GitHub Pages. `CNAME` enthält bereits die Domain; die DNS-Konfiguration muss bei normalen Inhaltsänderungen nicht geändert werden.
 
-## Eigene Domain später verbinden
-
-Sobald `emanuelesalafrica.de` gekauft ist:
-
-1. In `CNAME.example` den Text in `CNAME` umbenennen.
-2. Bei GitHub Pages die Custom Domain `emanuelesalafrica.de` eintragen.
-3. Beim Domainanbieter die von GitHub angezeigten DNS-Einträge setzen.
-
-## Noch ergänzen
-
-- GitHub-Profil-Link im Footer
-- Screenshots / Videos für die Projektkarten
-- Links zu spielbaren Demos oder Repositories
-- optional: eigenes Foto oder 3D-Render im Hero
+Vorher `node --check script.js`, `node --check scripts/<datei>.js` und `git diff --check` ausführen und die betroffenen Funktionen im Browser prüfen.

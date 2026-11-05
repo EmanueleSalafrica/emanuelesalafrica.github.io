@@ -9,12 +9,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=local-32" />
+    <!-- Gestaltung und responsive Regeln; Code-Wegweiser: CODE-UEBERSICHT.md. -->
+    <link rel="stylesheet" href="styles.css?v=structured-33" />
   </head>
   <body>
     <a class="skip-link" href="#content">Zum Inhalt springen</a>
+    <!-- Dekorativer Hintergrund: scripts/background.js zeichnet auf diesem Canvas. -->
     <canvas id="constellation" aria-hidden="true"></canvas>
 
+    <!-- scripts/navigation.js markiert den sichtbaren Abschnitt im Menü. -->
     <header class="site-header">
       <a class="wordmark" href="#start" aria-label="Zur Startseite">ES<span>.</span></a>
       <nav aria-label="Hauptnavigation">
@@ -27,6 +30,7 @@
     </header>
 
     <main id="content">
+      <!-- Startbereich: Inhalte hier, Glow und Scrollpfeil in styles.css. -->
       <section class="hero section" id="start" aria-labelledby="hero-title">
         <div class="hero-glow"></div>
         <p class="eyebrow">Hallo, ich bin</p>
@@ -40,6 +44,8 @@
         <a class="scroll-hint" href="#ueber-mich" aria-label="Zum Abschnitt Über mich scrollen">SCROLL <span>↓</span></a>
       </section>
 
+      <!-- Gegenläufige Werkzeugleisten. scripts/ticker.js ergänzt die Loop-Kopie.
+           Versteckte Wiederholungen ermöglichen den nahtlosen Übergang. -->
       <section class="ticker" aria-label="Programme und Werkzeuge">
         <div class="ticker-lane ticker-lane-left">
           <div class="ticker-track">
@@ -55,6 +61,7 @@
         </div>
       </section>
 
+      <!-- Persönliche Texte und Fakten links, Bildungsweg rechts. -->
       <section class="about section" id="ueber-mich" aria-labelledby="about-title">
         <div class="section-label">01 / ÜBER MICH</div>
         <div class="profile-roadmap">
@@ -79,6 +86,7 @@
               </div>
             </div>
           </article>
+          <!-- scripts/education.js setzt .is-active; CSS zeichnet Route und Leuchten. -->
           <section class="education-route" aria-label="Bildungsweg">
             <div class="education-line" aria-hidden="true"></div>
             <article class="education-entry education-entry-left">
@@ -119,6 +127,8 @@
           <p>Eine Auswahl aus meinem Studium und meiner Projektarbeit. Weitere Arbeiten sind bereits in Vorbereitung.</p>
         </div>
         <div class="project-grid">
+          <!-- scripts/projects.js steuert beide Karten. aria-controls verbindet
+               Vorschau und Details. Erst ein Klick startet den Medienwechsel. -->
           <article class="project-card interactive-project neon-project" aria-label="Neon Escape, Spielentwicklungsprojekt">
             <div class="project-preview neon-trailer" aria-label="Neon Escape: Poster und Gameplay-Vorschau. Klicke, um das Projekt zu öffnen." tabindex="0" role="button" aria-controls="neon-details" aria-expanded="false">
               <img class="project-poster neon-poster" src="assets/neon-escape/neon-escape-poster.png" alt="Neon Escape: Figur im Neon-Labyrinth kämpft gegen Roboter" />
@@ -181,6 +191,8 @@
             </div>
           </article>
         </div>
+        <!-- data-wire am Button entspricht einer SVG-path-ID. scripts/tech-stack.js
+             bewegt den Lichtpunkt entlang dieser Leitung ab der Core Unit. -->
         <section class="core-unit" aria-labelledby="core-title">
           <div class="stack-board" aria-label="Technologien dieser Website">
             <svg class="stack-circuit" viewBox="0 0 1000 620" preserveAspectRatio="none" aria-hidden="true">
@@ -225,8 +237,9 @@
     <footer class="site-footer">
       <a class="wordmark" href="#start" aria-label="Nach oben">ES<span>.</span></a>
       <p>© <span id="year"></span> Emanuele Salafrica</p>
-      <div><a href="mailto:Emanuele_25.03.97@hotmail.com">E-Mail</a><a href="https://github.com/EmanueleSalafrica" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+      <div><a href="mailto:Emanuele_25.03.97@hotmail.com">E-Mail</a><a href="https://github.com/EmanueleSalafrica" target="_blank" rel="noreferrer">GitHub ↗</a><a href="impressum.html">Impressum</a></div>
     </footer>
-    <script src="script.js?v=local-28"></script>
+    <!-- Modul-Einstieg; importiert die nach Aufgaben getrennten Dateien in scripts/. -->
+    <script type="module" src="script.js?v=structured-33"></script>
   </body>
 </html>
